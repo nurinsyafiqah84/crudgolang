@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Product List</title>
+    </head>
+    <body>
+        <h3>Product List</h3>
+        <a href="/add">Add</a>
+        <form method="POST" action="/processSearch">
+            <input type="text" placeholder="Search Id" name="searchId">
+            <input type="submit" value="Search">
+        </form>
+        <table border = "1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            {{range .products}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Price}}</td>
+                    <td>{{.Quantity}}</td>
+                    <td>{{.Description}}</td>
+                    <td>
+                        <a href="/edit?id={{.Id}}">Edit</a>
+                        <a href="/delete?id={{.Id}}" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            {{end}}
+        </table>
+    </body>
+</html>
